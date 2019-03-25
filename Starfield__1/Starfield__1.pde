@@ -1,7 +1,7 @@
-Star[] stars = new Star[1000];
+Star[] stars = new Star[20000];
 float speed;
 void setup() {
-  size(800,800);
+  size(1080,1080);
   
   
   for(int i = 0; i < stars.length; i++){
