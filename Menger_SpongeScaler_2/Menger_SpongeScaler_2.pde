@@ -1,6 +1,6 @@
  float a = 0;
  Box b;
- float scaler = 12.5;
+ float scaler = 1.3;
  
  ArrayList<Box> sponge;
  
@@ -21,7 +21,7 @@
    sponge = next;
    
    for(Box b: sponge){
-     b.r = b.r - scaler;
+     b.r = b.r * scaler;
    }
  }
  
