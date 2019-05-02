@@ -1,11 +1,11 @@
-var angle = 0;
+var angle;
 
 var slider;
 
 function setup() {
 
-  createCanvas(400, 400);
-  slider = createSlider(0, 2 * PI, PI / 4, 0.001);
+  createCanvas(900, 900);
+  slider = createSlider(0, 2 * PI, PI / 6, PI / 16);
 }
 
 
@@ -13,8 +13,8 @@ function draw() {
   background(51);
   stroke(255);
   angle = slider.value();
-  translate(200, height);
-  branch(100);
+  translate(450, height);
+  branch(160);
 
 
 }
@@ -25,14 +25,14 @@ function branch(length) {
   translate(0, -length);
   
 
-  if (length > 0.5) { // Afwisselen van de 2 takken 
+  if (length > 5) { // Afwisselen van de 2 takken 
     push();
     rotate(angle);
-    branch(length * 0.67);
+    branch(length * 0.75);
     pop();
     push();
     rotate(-angle);
-    branch(length * 0.67);
+    branch(length * 0.75);
     pop();
   }
 }

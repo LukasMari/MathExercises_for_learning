@@ -6,8 +6,8 @@ function setup() {
   createCanvas(720, 480);
   pixelDensity(1);
 
-  sliderMIN = createSlider(-2.5, 0, 1, 0.01);
-  sliderMAX = createSlider(0, 2.5, 1, 0.01);
+  sliderMIN = createSlider(-2.5, 0, -2.5, 0.01);
+  sliderMAX = createSlider(0, 2.5, 2.5, 0.01);
   
 }
 
