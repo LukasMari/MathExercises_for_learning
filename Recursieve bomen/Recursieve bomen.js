@@ -25,7 +25,7 @@ function branch(length) {
   translate(0, -length);
   
 
-  if (length > 4) { // Afwisselen van de 2 takken 
+  if (length > 0.5) { // Afwisselen van de 2 takken 
     push();
     rotate(angle);
     branch(length * 0.67);
