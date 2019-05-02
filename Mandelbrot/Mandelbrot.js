@@ -1,8 +1,13 @@
+var sliderMIN;
+var sliderMAX;
+
 function setup() {
 
   createCanvas(720, 480);
   pixelDensity(1);
 
+  sliderMIN = createSlider(-2.5, 0, 1, 0.01);
+  sliderMAX = createSlider(0, 2.5, 1, 0.01);
   
 }
 
@@ -10,7 +15,7 @@ function setup() {
 function draw() {
   loadPixels(); // Pixels individueel bewerken voor kleurschakering
 
-  var maxn = 1000; // # iteraties
+  var maxn = 100; // # iteraties
   var maxComplex = 16; // 'Out of bounds waarde'
 
 
@@ -24,8 +29,8 @@ function draw() {
       var minb = -1.5; // Hiermee kan je inzoomen op de set Imaginaire-as
       var maxb = 1.5;
 
-      var a = map(x, 0, width, mina, maxa); // Reëele-as limiteren.
-      var b = map(y, 0, height, minb, maxb); // Imaginaire-as limiteren. 
+      var a = map(x, 0, width, sliderMIN.value(), sliderMAX.value()); // Reëele-as limiteren.
+      var b = map(y, 0, height, sliderMIN.value(), sliderMAX.value()); // Imaginaire-as limiteren. 
 
       var ca = a; // initiële Constante Complex getal c => a + bi
       var cb = b; // initiële constante Complex getal c => a + bi 
