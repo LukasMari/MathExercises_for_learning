@@ -3,7 +3,7 @@ var sliderMAX;
 
 function setup() {
 
-  createCanvas(720, 480);
+  createCanvas(360, 360);
   pixelDensity(1);
 
   sliderMIN = createSlider(-2.5, 0, -2.5, 0.01);
