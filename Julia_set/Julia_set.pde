@@ -6,18 +6,15 @@ void setup() {
 }
 void draw() {
 
-   //float ca = map(mouseX, 0, width, -1, 1);//-0.70176;
- //  float cb = map(mouseY, 0, height, -1, 1);//-0.3842;
+   float ca = map(mouseX, 0, width, -1, 1);//-0.70176;
+    float cb = map(mouseY, 0, height, -1, 1);//-0.3842;
 
-  float ca = cos(angle* PI);//sin(angle);
-  float cb = sin(angle);
+  //float ca = cos(angle* 3.4);//sin(angle)
+  //float cb = sin(angle);
 
   angle += 0.02;
 
   background(255);
-
-
-
   
   float w = 5;
   float h = (w * height) / width;
