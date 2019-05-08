@@ -1,88 +1,106 @@
 var locaties = [];
-var n = 7;
+var n = 10;
+var controleNummer = 0;
+var timePast = 0;
+var generatieNummer = 0;
 
 var bestDist;
 var besteOplossing;
-var img; 
+var img;
 
 
 
 function setup() {
-    createCanvas(400, 300);
+  createCanvas(800, 650);
 
-    for (var i = 0; i < n; i++) {
-        var vector = createVector(random(width), random(height));
-        locaties[i] = vector;
-        
-    }
+  for (var i = 0; i < n; i++) {
+    var vector = createVector(random(width), random(height - 120) + 125);
+    locaties[i] = vector;
+  }
+  var d = calcD(locaties);
+  bestDist = d;
+  besteOplossing = locaties.slice();
 
-    var d = calcD(locaties);
-    bestDist = d;
-    besteOplossing = locaties.slice();
-
+  setInterval(calculateTimePassed, 1000);
 }
 
 
 function draw() {
-    background(255);
-    fill(0);
-    
-    for (var i = 0; i < locaties.length; i++) {
-        ellipse(locaties[i].x, locaties[i].y, 8, 8);
-      }
-    
+  background(255);
+  fill(0);
 
-    stroke(0);
-    strokeWeight(1);
-    noFill();
-    beginShape();
-    for (var i = 0; i < locaties.length; i++) {
-        vertex(locaties[i].x, locaties[i].y);
-      }
+  for (var i = 0; i < locaties.length; i++) {
+    ellipse(locaties[i].x, locaties[i].y, 8, 8);
+  }
 
-    endShape();
 
-    var i = floor(random(locaties.length));
-    var j = floor(random(locaties.length));
+  stroke(0);
+  strokeWeight(1);
+  noFill();
+  beginShape();
+  for (var i = 0; i < locaties.length; i++) {
+    vertex(locaties[i].x, locaties[i].y);
+  }
 
-    swap(locaties, i, j); // lus
+  endShape();
 
-    var d = calcD(locaties);
+  var i = floor(random(locaties.length)); // Nieuwe selectie van verbonden vertexxen
+  var j = floor(random(locaties.length));
 
-    if(d < bestDist){ // Betere oplossing gevonden
-      bestDist = d;
-      console.log(bestDist);
-      besteOplossing = locaties.slice();
-    }
 
-    stroke(232,6,25);
-    strokeWeight(3);
-    noFill();
-    beginShape();
-    for (var i = 0; i < besteOplossing.length; i++) {
-        vertex(besteOplossing[i].x, besteOplossing[i].y);
-      }
+  swap(locaties, i, j); // lus
+  controleNummer = controleNummer + 1;
 
-    endShape();
-    
+  var d = calcD(locaties); // afstand berekenen voor de huidige configuratie
 
+  if (d < bestDist) { // Betere oplossing gevonden
+    bestDist = d;
+    generatieNummer++;
+    besteOplossing = locaties.slice();
+  }
+
+  stroke(232, 6, 25);
+  strokeWeight(3);
+  noFill();
+  beginShape();
+  for (var i = 0; i < besteOplossing.length; i++) {
+    vertex(besteOplossing[i].x, besteOplossing[i].y);
+  }
+
+  endShape();
+
+  stroke(27, 25, 33);
+  textSize(32);
+  text('Aantal controles: ' + controleNummer, 5, 50);
+
+  text('Kortste pad afstand: ' + (Math.floor(bestDist) + 1) + ' pixels', 5, 80); // +1 als buffer 
+
+  if (timePast <= 60) {
+    text('Tijd: ' + timePast + ' sec', 5, 110);
+  }else{
+    text('Tijd: ' + (Math.floor(timePast / 60)) + ' min '+ (timePast % 60)  + ' sec', 5, 110);
+  }
+
+  text('# oplossingen: ' + generatieNummer, width - 300, 50);
 }
 
-function swap(a , i , j){
-    var temp = a[i];
-    a[i] = a[j];
-    a[j] = temp;
+function swap(a, i, j) {
+  var temp = a[i];
+  a[i] = a[j];
+  a[j] = temp;
 }
 
-function calcD(points){
-    var sum = 0;
+function calcD(points) {
+  var sum = 0;
 
-    for (var i = 0; i < points.length-1 ; i++) {
-        var d = dist(points[i].x , points[i].y, points[i+1].x , points[i+1].y);
-        sum += d;
-    }
+  for (var i = 0; i < points.length - 1; i++) {
+    var d = dist(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y);
+    sum += d;
+  }
 
-    return sum;
+  return sum;
 }
 
-
+function calculateTimePassed() {
+  timePast++;
+}

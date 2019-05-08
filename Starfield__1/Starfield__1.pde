@@ -1,4 +1,4 @@
-Star[] stars = new Star[20000];
+Star[] stars = new Star[10000];
 float speed;
 void setup() {
   size(1080,1080);
