@@ -21,7 +21,7 @@ function setup() {
   bestDist = d;
   besteOplossing = locaties.slice();
 
-  setInterval(calc, 1);
+  setInterval(calc, 1000);
 }
 
 
