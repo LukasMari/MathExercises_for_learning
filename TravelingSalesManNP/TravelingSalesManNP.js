@@ -104,10 +104,13 @@ function calc(){
 
 function calculateTimePassed(tijd) {
   if (tijd <= 60) {
-    text('Tijd: ' + tijd + ' sec', 5, 110);
-  }if(Math.floor(tijd / 60)> 60){
-    text('Tijd: ' + Math.floor(Math.floor(tijd / 60)/60) + ' uur ' + (Math.floor(tijd / 60) % 60) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
-  }else{
+    text('Tijd: ' + tijd % 60 + ' sec', 5, 110);
+  }else{ 
+    if(tijd <= 3600)
     text('Tijd: ' + (Math.floor(tijd / 60)) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+
+    if(tijd > 3600){
+      text('Tijd: ' + Math.floor(Math.floor(tijd / 60)/60) + ' uur ' + (Math.floor(tijd / 60) % 60) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+    }
   }
 }
