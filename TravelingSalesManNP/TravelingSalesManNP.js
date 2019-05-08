@@ -1,5 +1,5 @@
 var locaties = [];
-var n = 10;
+var n = 15;
 var controleNummer = 0;
 var timePast = 0;
 var generatieNummer = 0;
@@ -21,7 +21,7 @@ function setup() {
   bestDist = d;
   besteOplossing = locaties.slice();
 
-  setInterval(calculateTimePassed, 1000);
+  setInterval(calc, 1);
 }
 
 
@@ -71,16 +71,13 @@ function draw() {
 
   stroke(27, 25, 33);
   textSize(32);
+
   text('Aantal controles: ' + controleNummer, 5, 50);
 
   text('Kortste pad afstand: ' + (Math.floor(bestDist) + 1) + ' pixels', 5, 80); // +1 als buffer 
 
-  if (timePast <= 60) {
-    text('Tijd: ' + timePast + ' sec', 5, 110);
-  }else{
-    text('Tijd: ' + (Math.floor(timePast / 60)) + ' min '+ (timePast % 60)  + ' sec', 5, 110);
-  }
-
+  calculateTimePassed(timePast);
+  
   text('# oplossingen: ' + generatieNummer, width - 300, 50);
 }
 
@@ -101,6 +98,16 @@ function calcD(points) {
   return sum;
 }
 
-function calculateTimePassed() {
+function calc(){
   timePast++;
+}
+
+function calculateTimePassed(tijd) {
+  if (tijd <= 60) {
+    text('Tijd: ' + tijd + ' sec', 5, 110);
+  }if(Math.floor(tijd / 60)> 60){
+    text('Tijd: ' + Math.floor(Math.floor(tijd / 60)/60) + ' uur ' + (Math.floor(tijd / 60) % 60) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+  }else{
+    text('Tijd: ' + (Math.floor(tijd / 60)) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+  }
 }
