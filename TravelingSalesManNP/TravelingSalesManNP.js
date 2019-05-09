@@ -1,5 +1,5 @@
 var locaties = [];
-var n = 15;
+var n = 4;
 var controleNummer = 0;
 var timePast = 0;
 var generatieNummer = 0;
@@ -74,11 +74,13 @@ function draw() {
 
   text('Aantal controles: ' + controleNummer, 5, 50);
 
-  text('Kortste pad afstand: ' + (Math.floor(bestDist) + 1) + ' pixels', 5, 80); // +1 als buffer 
+  text('Kortste pad afstand: ' + (Math.floor(bestDist) + 1) + ' pixels', 5, 82.5); // +1 als buffer 
 
   calculateTimePassed(timePast);
   
   text('# oplossingen: ' + generatieNummer, width - 300, 50);
+    text('# punten: ' + n, width - 300, 82.5);
+
 }
 
 function swap(a, i, j) {
@@ -104,13 +106,13 @@ function calc(){
 
 function calculateTimePassed(tijd) {
   if (tijd <= 60) {
-    text('Tijd: ' + tijd % 60 + ' sec', 5, 110);
+    text('Tijd: ' + tijd % 60 + ' sec', 5, 112.5);
   }else{ 
     if(tijd <= 3600)
-    text('Tijd: ' + (Math.floor(tijd / 60)) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+    text('Tijd: ' + (Math.floor(tijd / 60)) + ' min '+ (tijd % 60)  + ' sec', 5, 112.5);
 
     if(tijd > 3600){
-      text('Tijd: ' + Math.floor(Math.floor(tijd / 60)/60) + ' uur ' + (Math.floor(tijd / 60) % 60) + ' min '+ (tijd % 60)  + ' sec', 5, 110);
+      text('Tijd: ' + Math.floor(Math.floor(tijd / 60)/60) + ' uur ' + (Math.floor(tijd / 60) % 60) + ' min '+ (tijd % 60)  + ' sec', 5, 112.5);
     }
   }
 }
