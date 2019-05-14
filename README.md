@@ -1,4 +1,4 @@
-# MathExercises_Fun
+# MathExercises
 
 In this repository I will be making the CodeTrain Challenges to better enhance my Mathemathical skills in programming and to understand how the two can work together. I will also try to find extra exercises other than those of Codetrain to further develop myself, and generally just post fun things to create here.
 
