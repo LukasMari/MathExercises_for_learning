@@ -14,7 +14,7 @@ function draw() {
   stroke(255);
   angle = slider.value();
   translate(450, height);
-  branch(160);
+  branch(80);
 
 
 }
