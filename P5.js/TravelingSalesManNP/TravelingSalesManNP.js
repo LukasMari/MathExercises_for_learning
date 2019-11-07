@@ -1,5 +1,5 @@
 var locaties = [];
-var n = 4;
+var n = 35;
 var controleNummer = 0;
 var timePast = 0;
 var generatieNummer = 0;
